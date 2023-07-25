@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('proveedor_producto', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('proveedor')->constrained('proveedor_producto');
+            $table->foreignId('producto')->constrained('proveedor_producto');
+            $table->decimal('precio', 10, 2);
+            $table->tinyInteger('estado');
         });
     }
 

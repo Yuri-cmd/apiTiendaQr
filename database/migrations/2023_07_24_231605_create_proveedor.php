@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('proveedor', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nombre', 255);
+            $table->string('celular', 9);
+            $table->string('correo', 50);
+            $table->string('ruc', 11);
+            $table->text('direccion');
+            $table->foreignId('distrito')->constrained('proveedor');
+            $table->foreignId('provincia')->constrained('proveedor');
+            $table->tinyInteger('estado');
         });
     }
 

@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('distrito', function (Blueprint $table) {
+        Schema::create('detalle_compra', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('provincia')->constrained('distrito');
-            $table->string('nombre', 255);
+            $table->foreignId('compra')->constrained('detalle_compra');
+            $table->foreignId('producto')->constrained('detalle_compra');
+            $table->integer('cantidad');
+            $table->decimal('precioUnitario', 10, 2);
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('distrito');
+        Schema::dropIfExists('detalle_compra');
     }
 };

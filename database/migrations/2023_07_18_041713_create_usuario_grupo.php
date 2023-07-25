@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('usuario')->constrained('usuario_grupo');
             $table->foreignId('grupo')->constrained('usuario_grupo');
-            $table->smallInteger('estado');
+            $table->tinyInteger('estado');
             $table->timestamps();
         });
     }
